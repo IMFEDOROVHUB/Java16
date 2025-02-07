@@ -68,4 +68,15 @@ public class GameTest {
             game.round(player2.name, "Ваня");
         });
     }
+
+    @Test
+    public void testNotRegisteredAll() {
+        Game game = new Game();
+
+        game.register(player2);
+
+        Assertions.assertThrows(NotRegisteredException.class, () -> {
+            game.round("Вова", "Ваня");
+        });
+    }
 }
